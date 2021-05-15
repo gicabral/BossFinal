@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 4df282f1f6ec80e45b2b47a0a1ff580d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Vahika
+  fontNames:
+  - Vahika
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e150baf281949214489750d6daa75817, type: 3}
+  - {fileID: 12800000, guid: 4b135aa94c197704c9c59b5f53d65b7e, type: 3}
+  - {fileID: 12800000, guid: 88d5dbbaffcce6b42b921161e0983b2c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
