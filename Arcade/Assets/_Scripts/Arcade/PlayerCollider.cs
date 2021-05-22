@@ -36,6 +36,11 @@ public class PlayerCollider : MonoBehaviour
             checkPong = true;
             
         }
+        else if (collision.gameObject.tag == "Out")
+        {
+            SceneManager.LoadScene(4);
+            
+        }
     }
 
     void OnCollisionExit(Collision other)
