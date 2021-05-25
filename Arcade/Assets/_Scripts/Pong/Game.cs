@@ -50,7 +50,7 @@ public class Game : MonoBehaviour
     }
 
     void CheckInput(){
-        if(gameState == GameState.Playing){
+        if(gameState == GameState.Playing || gameState == GameState.GameOver){
             if(Input.GetKeyUp(KeyCode.Escape)){
                 PauseResumeGame();
             }
