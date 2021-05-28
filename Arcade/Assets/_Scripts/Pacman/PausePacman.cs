@@ -3,29 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class PausePacman : MonoBehaviour
 {
 
-    private Game game;
-
-    void Start(){
-        game = GameObject.Find("Game").GetComponent<Game>();
-    }
+    public GameObject game;
 
     //Reloads the Level
 	public void Reload(){
+		Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	//controls the pausing of the scene
 	public void PlayControl(){
-		Debug.Log("oi");
-		game.PauseResumeGame();	
+		Time.timeScale = 1f;
+		game.GetComponent<GamePacman>().PauseResumeGame();
 		
 	}
 
 	//loads inputted level
 	public void LoadLevel(){
+		Time.timeScale = 1f;
         SceneManager.LoadScene(0);
 	}
 }

@@ -12,6 +12,10 @@ public class PlayerCollider : MonoBehaviour
     private bool checkPacman = false;
     private bool checkFrogger = false;
 
+    void Start(){
+        Time.timeScale = 1f;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Pacman")

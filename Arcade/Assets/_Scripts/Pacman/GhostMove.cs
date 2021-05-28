@@ -6,6 +6,7 @@ public class GhostMove : MonoBehaviour {
     public Transform[] waypoints;
     int cur = 0;
     public float speed = 0.3f;
+    public GameObject game;
 
     void FixedUpdate () {
         // Waypoint not reached yet? then move closer
@@ -22,7 +23,10 @@ public class GhostMove : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D co) {
-    if (co.name == "pacman")
+    if (co.name == "pacman"){
         Destroy(co.gameObject);
+        game.GetComponent<GamePacman>().ComputerWins();
+    }
+        
 }
 }
