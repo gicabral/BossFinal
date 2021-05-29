@@ -59,8 +59,8 @@
 			{
 				uv -= 0.5;
 				uv *= 2.;
-				uv.x *= 1.2 + pow(abs(uv.y) / bend, 2.);
-				uv.y *= 1.2 + pow(abs(uv.x) / bend, 2.);
+				uv.x *= 1.17 + pow(abs(uv.y) / bend, 2.);
+				uv.y *= 1.17 + pow(abs(uv.x) / bend, 2.);
 
 				uv /= 2.5;
 				return uv + 0.5;
