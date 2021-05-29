@@ -11,6 +11,7 @@ public class PlayerCollider : MonoBehaviour
     private bool checkPong = false;
     private bool checkPacman = false;
     private bool checkFrogger = false;
+    private bool checkPinball = false;
 
     void Start(){
         Time.timeScale = 1f;
@@ -40,6 +41,14 @@ public class PlayerCollider : MonoBehaviour
             checkPong = true;
             
         }
+        else if (collision.gameObject.tag == "Pinball")
+        {
+            InstructionsGames.GetComponent<Text>().text = "PRESS SPACE TO PLAY PINBALL";
+            InstructionsGames.SetActive(true);
+            Debug.Log("Press space to play Pinball");
+            checkPinball = true;
+            
+        }
         else if (collision.gameObject.tag == "Out")
         {
             SceneManager.LoadScene(4);
@@ -54,6 +63,7 @@ public class PlayerCollider : MonoBehaviour
         checkPong = false;
         checkPacman = false;
         checkFrogger = false;
+        checkPinball = false;
     }
 
     void Update()
@@ -71,6 +81,11 @@ public class PlayerCollider : MonoBehaviour
         if (Input.GetButtonDown("Jump") && checkFrogger == true) 
         {
             SceneManager.LoadScene(3);
+        }
+
+        if (Input.GetButtonDown("Jump") && checkPinball == true) 
+        {
+            SceneManager.LoadScene(5);
         }
     }
 }
