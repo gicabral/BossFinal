@@ -12,6 +12,7 @@ public class PlayerCollider : MonoBehaviour
     private bool checkPacman = false;
     private bool checkFrogger = false;
     private bool checkPinball = false;
+    private bool checkTetris = false;
 
     void Start(){
         Time.timeScale = 1f;
@@ -49,6 +50,14 @@ public class PlayerCollider : MonoBehaviour
             checkPinball = true;
             
         }
+        else if (collision.gameObject.tag == "Tetris")
+        {
+            InstructionsGames.GetComponent<Text>().text = "PRESS SPACE TO PLAY TETRIS";
+            InstructionsGames.SetActive(true);
+            Debug.Log("Press space to play Tetris");
+            checkTetris = true;
+            
+        }
         else if (collision.gameObject.tag == "Out")
         {
             SceneManager.LoadScene(4);
@@ -64,6 +73,7 @@ public class PlayerCollider : MonoBehaviour
         checkPacman = false;
         checkFrogger = false;
         checkPinball = false;
+        checkTetris = false;
     }
 
     void Update()
@@ -86,6 +96,11 @@ public class PlayerCollider : MonoBehaviour
         if (Input.GetButtonDown("Jump") && checkPinball == true) 
         {
             SceneManager.LoadScene(5);
+        }
+
+        if (Input.GetButtonDown("Jump") && checkTetris == true) 
+        {
+            SceneManager.LoadScene(6);
         }
     }
 }
