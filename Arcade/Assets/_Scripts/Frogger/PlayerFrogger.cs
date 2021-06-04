@@ -52,7 +52,7 @@ public class PlayerFrogger : MonoBehaviour
     }
 
     void CheckInput(){
-        if(gameState == GameState.Playing || gameState == GameState.Paused){
+        if(gameState == GameState.Playing){
             if(Input.GetKeyUp(KeyCode.Escape)){
                 PauseResumeGame();
             }

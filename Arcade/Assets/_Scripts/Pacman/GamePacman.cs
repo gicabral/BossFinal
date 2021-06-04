@@ -39,7 +39,7 @@ public class GamePacman : MonoBehaviour
     }
 
     void CheckInput(){
-        if(gameState == GameState.Playing || gameState == GameState.GameOver || gameState == GameState.Paused){
+        if(gameState == GameState.Playing || gameState == GameState.GameOver){
             if(Input.GetKeyUp(KeyCode.Escape)){
                 PauseResumeGame();
             }
