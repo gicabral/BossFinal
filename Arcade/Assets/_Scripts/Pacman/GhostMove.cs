@@ -11,11 +11,17 @@ public class GhostMove : MonoBehaviour {
     void FixedUpdate () {
         // Waypoint not reached yet? then move closer
         if (transform.position != waypoints[cur].position) {
+            Debug.Log("way" + waypoints[cur].position);
+            Debug.Log(transform.position);
             Vector2 p = Vector2.MoveTowards(transform.position, waypoints[cur].position, speed);
             GetComponent<Rigidbody2D>().MovePosition(p);
         }
         // Waypoint reached, select next one
-        else cur = (cur + 1) % waypoints.Length;
+        
+        else{
+            Debug.Log("reached");
+            cur = (cur + 1) % waypoints.Length;
+        }
         // Animation
         Vector2 dir = waypoints[cur].position - transform.position;
         GetComponent<Animator>().SetFloat("DirX", dir.x);

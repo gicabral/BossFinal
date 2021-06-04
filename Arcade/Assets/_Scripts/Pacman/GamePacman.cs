@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class GamePacman : MonoBehaviour
 {
     private int playerScore;
@@ -13,6 +15,10 @@ public class GamePacman : MonoBehaviour
     public Text playAgain;
     public Text won;
     public Text lost;
+
+    public AudioClip playerPoint;
+    public AudioClip playerWon;
+    public AudioClip playerDied;
     
     public GameObject pausePanel;
 
@@ -69,18 +75,18 @@ public class GamePacman : MonoBehaviour
 
     private void PlayerWins(){
         won.enabled = true;
-        // GetComponent<AudioSource>().PlayOneShot(playerWon, 0.7F);
+        GetComponent<AudioSource>().PlayOneShot(playerWon, 0.7F);
         GameOver();
     }
 
     public void ComputerWins(){
         lost.enabled = true;
-        // hud.winComputer.enabled = true;
-        // GetComponent<AudioSource>().PlayOneShot(computerWon, 0.7F);
+        GetComponent<AudioSource>().PlayOneShot(playerDied, 0.7F);
         GameOver();
     }
 
     public void PlayerPoint(){
+        GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
         playerScore++;
         Debug.Log(playerScore);
         playerScoreTxt.text = playerScore.ToString();
