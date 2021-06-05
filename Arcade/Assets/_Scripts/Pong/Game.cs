@@ -124,6 +124,7 @@ public class Game : MonoBehaviour
         hud.winPlayer.enabled = false;
         hud.playAgain.enabled = false;
 
+        GetComponent<AudioSource>().Stop();
 
         gameState = GameState.Playing;
         paddleComputer.transform.localPosition = new Vector3(paddleComputer.transform.localPosition.x, 14.9f, paddleComputer.transform.localPosition.z);
@@ -141,7 +142,7 @@ public class Game : MonoBehaviour
         hud.winPlayer.enabled = false;
         hud.playAgain.enabled = false;
 
-        GetComponent<AudioSource>().Stop();
+
 
         gameState = GameState.Playing;
         paddleComputer.transform.localPosition = new Vector3(paddleComputer.transform.localPosition.x, 14.9f, paddleComputer.transform.localPosition.z);
