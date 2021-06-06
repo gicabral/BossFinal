@@ -20,6 +20,7 @@ public class DestroyBall : MonoBehaviour
     public GameObject scoreUI;
     private GameObject hudCanvas;
     public GameObject pausePanel;
+    public Button home;
 
     public enum GameState{
         Playing,
@@ -56,13 +57,14 @@ public class DestroyBall : MonoBehaviour
     }
 
     void CheckInput(){
-        if(gameState == GameState.Playing || gameState == GameState.GameOver){
+        if(gameState == GameState.Playing){
             if(Input.GetKeyUp(KeyCode.Escape)){
                 PauseResumeGame();
             }
         }
 
         if(gameState == GameState.GameOver){
+            home.gameObject.SetActive(true);
             if(Input.GetKeyUp(KeyCode.Space)){
                 StartGame();
             }
@@ -101,6 +103,7 @@ public class DestroyBall : MonoBehaviour
         numBalls = 0;
         playAgain.SetActive(false);
         scoreUI.SetActive(false);
+        home.gameObject.SetActive(false);
         gameState = GameState.Playing;
         launcherScript.isActive = true;
     }

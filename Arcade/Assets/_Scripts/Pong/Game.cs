@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -21,6 +22,7 @@ public class Game : MonoBehaviour
     public AudioClip playerWon;
     public AudioClip computerWon;
     public AudioClip lostBall;
+    public Button home;
     
     public GameObject pausePanel;
 
@@ -50,17 +52,19 @@ public class Game : MonoBehaviour
     }
 
     void CheckInput(){
-        if(gameState == GameState.Playing || gameState == GameState.GameOver){
+        if(gameState == GameState.Playing){
             if(Input.GetKeyUp(KeyCode.Escape)){
                 PauseResumeGame();
             }
         }
         if(gameState == GameState.Launched){
+            home.gameObject.SetActive(true);
             if(Input.GetKeyUp(KeyCode.Space)){
                 StartGame();
             }
         }
         if(gameState == GameState.GameOver){
+            home.gameObject.SetActive(true);
             if(Input.GetKeyUp(KeyCode.Space)){
                 StartGame2();
             }
@@ -123,6 +127,7 @@ public class Game : MonoBehaviour
         hud.winComputer.enabled = false;
         hud.winPlayer.enabled = false;
         hud.playAgain.enabled = false;
+        home.gameObject.SetActive(false);
 
         GetComponent<AudioSource>().Stop();
 
@@ -141,6 +146,7 @@ public class Game : MonoBehaviour
         hud.winComputer.enabled = false;
         hud.winPlayer.enabled = false;
         hud.playAgain.enabled = false;
+        home.gameObject.SetActive(false);
 
 
 

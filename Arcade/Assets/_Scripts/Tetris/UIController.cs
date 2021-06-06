@@ -79,7 +79,7 @@ public class UIController : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-        if(gameState == GameState.Playing || gameState == GameState.GameOver){
+        if(gameState == GameState.Playing && !gameOverPanel.activeSelf){
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 togglePause();            
                 
