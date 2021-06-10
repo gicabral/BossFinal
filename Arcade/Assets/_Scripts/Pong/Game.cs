@@ -90,6 +90,7 @@ public class Game : MonoBehaviour
         ball = GameObject.Instantiate(ball, new Vector3 (27.1f, 14.9f, -2), Quaternion.identity);
         ball.GetComponent<Ball>().enabled = true;
         ball.GetComponent<AudioSource>().enabled = true;
+        ball.GetComponent<Volume>().enabled = true;
     }
 
     private void PlayerWins(){

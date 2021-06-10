@@ -49,6 +49,7 @@ public class GamePacman : MonoBehaviour
             won.enabled = false;
             lost.enabled = false;
             home.gameObject.SetActive(true);
+            GetComponent<Volume>().enabled = true;
             Time.timeScale = 0f;
             if(Input.GetKeyUp(KeyCode.Space)){
                 StartGame();
