@@ -11,7 +11,7 @@ public class Audio : MonoBehaviour
 
     void Start()
     {
-        vol = 0.05f;
+        vol = 0.1f;
     }
     
     void Update(){
