@@ -7,15 +7,25 @@ using UnityEngine.SceneManagement;
 public class PlayerCollider : MonoBehaviour
 {
     public GameObject InstructionsGames;
+    public GameObject InstructionsStart;
+    private static readonly string instructions = "intructions";
 
     private bool checkPong = false;
     private bool checkPacman = false;
     private bool checkFrogger = false;
     private bool checkPinball = false;
     private bool checkTetris = false;
+    private int checkInstruction;
 
     void Start(){
         Time.timeScale = 1f;
+        checkInstruction = PlayerPrefs.GetInt(instructions);
+        if(checkInstruction == 0){
+            InstructionsStart.SetActive(true);
+            PlayerPrefs.SetInt(instructions, 1);
+        }else{
+            PlayerPrefs.SetInt(instructions, 0);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
