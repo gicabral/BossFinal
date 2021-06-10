@@ -35,7 +35,6 @@ public class GamePacman : MonoBehaviour
     {
         CheckScore();
         CheckInput();
-        
     }
 
     void CheckInput(){

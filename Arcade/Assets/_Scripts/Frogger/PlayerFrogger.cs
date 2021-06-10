@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class PlayerFrogger : MonoBehaviour
 {
     public Image life1, life2, life3, life4, timeBand;
@@ -20,6 +22,10 @@ public class PlayerFrogger : MonoBehaviour
     public Text playAgain;
     public Text won;
     public Text lost;
+
+    public AudioClip playerPoint;
+    public AudioClip playerWon;
+    public AudioClip playerDied;
     
     public GameObject pausePanel;
 
@@ -94,6 +100,7 @@ public class PlayerFrogger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GetComponent<SpriteRenderer>().sprite = playerUp;
+            GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
             pos += Vector3.up;
             UpdatePlayerScore(10);
         } else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -101,6 +108,7 @@ public class PlayerFrogger : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = playerDown;
             if (pos.y > -6)
             {
+                GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
                 pos += Vector3.down;
                 UpdatePlayerScore(10);
             }
@@ -108,7 +116,8 @@ public class PlayerFrogger : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = playerLeft;
             if (pos.x > -8)
-            {   
+            {
+                GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
                 pos += Vector3.left;
                 UpdatePlayerScore(10);
             }
@@ -118,6 +127,7 @@ public class PlayerFrogger : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = playerRight;
             if (pos.x < 8)
             {
+                GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
                 pos += Vector3.right;
                 UpdatePlayerScore(10);
             }
@@ -189,6 +199,7 @@ public class PlayerFrogger : MonoBehaviour
                             UpdatePlayerScore(timeRemaining);
                             ResetTimer();
                             homeBays += 1;
+                            GetComponent<AudioSource>().PlayOneShot(playerWon, 0.7F);
                         }
                         if (homeBays >= 5)
                         {
@@ -205,7 +216,7 @@ public class PlayerFrogger : MonoBehaviour
         }
         if (!isSafe)
         {
-
+            
             if (health == 0)
             {
                 GameOver();
@@ -218,6 +229,7 @@ public class PlayerFrogger : MonoBehaviour
 
     void GameOver()
     {
+        GetComponent<AudioSource>().PlayOneShot(playerDied, 0.7F);
         health = 4;
         homeBays = 0;
         ResetPosition();
@@ -252,7 +264,7 @@ public class PlayerFrogger : MonoBehaviour
 
     void PlayerDied()
     {
-        
+        GetComponent<AudioSource>().PlayOneShot(playerDied, 0.7F);
         DecreaseHealth();
         ResetPosition();
         ResetTimer();
