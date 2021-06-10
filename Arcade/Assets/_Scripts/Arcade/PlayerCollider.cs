@@ -8,7 +8,8 @@ public class PlayerCollider : MonoBehaviour
 {
     public GameObject InstructionsGames;
     public GameObject InstructionsStart;
-    private static readonly string instructions = "intructions";
+    private static readonly string instructions = "intructions9";
+    private static readonly string times = "times2";
 
     private bool checkPong = false;
     private bool checkPacman = false;
@@ -16,16 +17,25 @@ public class PlayerCollider : MonoBehaviour
     private bool checkPinball = false;
     private bool checkTetris = false;
     private int checkInstruction;
+    private int checkTimes;
 
     void Start(){
         Time.timeScale = 1f;
         checkInstruction = PlayerPrefs.GetInt(instructions);
+        checkTimes = PlayerPrefs.GetInt(times);
         if(checkInstruction == 0){
             InstructionsStart.SetActive(true);
             PlayerPrefs.SetInt(instructions, 1);
         }else{
-            PlayerPrefs.SetInt(instructions, 0);
+            checkTimes +=1;
+            PlayerPrefs.SetInt(times, checkTimes);
+            if(checkTimes == 6){
+                PlayerPrefs.SetInt(instructions, 0); 
+                checkTimes =0;
+                PlayerPrefs.SetInt(times, checkTimes);
+            }
         }
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -112,5 +122,7 @@ public class PlayerCollider : MonoBehaviour
         {
             SceneManager.LoadScene(6);
         }
+
+        Debug.Log(checkTimes);
     }
 }
