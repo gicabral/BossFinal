@@ -17,7 +17,6 @@ public class GamePacman : MonoBehaviour
     public Text lost;
 
     public AudioClip playerPoint;
-    public AudioClip playerWon;
     public AudioClip playerDied;
     
     public GameObject pausePanel;
@@ -75,7 +74,6 @@ public class GamePacman : MonoBehaviour
 
     private void PlayerWins(){
         won.enabled = true;
-        GetComponent<AudioSource>().PlayOneShot(playerWon, 0.7F);
         GameOver();
     }
 

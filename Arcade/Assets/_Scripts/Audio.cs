@@ -8,12 +8,13 @@ public class Audio : MonoBehaviour
 {
     public AudioSource[] music;
     public float vol;
-    private static readonly string BackgroundPref = "BackgroundPref";
+    private static readonly string BackgroundPref = "BackgroundPref2";
 
 
     void Start()
     {
-        vol = 0.1f;
+        vol = 0.2f;
+        PlayerPrefs.SetFloat(BackgroundPref, vol);
     }
     
     void Update(){
@@ -25,6 +26,13 @@ public class Audio : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Minus)) {
             vol-=0.05f;
             PlayerPrefs.SetFloat(BackgroundPref, vol);
+        }
+        for(int i = 0; i < music.Length; i++){
+            
+            if (!music[i].isPlaying)
+            {
+                music[i].Play();
+            }
         }
         SetLevel();
         

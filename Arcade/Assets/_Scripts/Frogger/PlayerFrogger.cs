@@ -54,6 +54,7 @@ public class PlayerFrogger : MonoBehaviour
         CheckCollisions();
         CheckGameTimer();
         CheckInput();
+        Debug.Log(gameState);
 
     }
 
@@ -96,44 +97,46 @@ public class PlayerFrogger : MonoBehaviour
 
     private void UpdatePosition()
     {
-        Vector3 pos = transform.localPosition;
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            GetComponent<SpriteRenderer>().sprite = playerUp;
-            GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
-            pos += Vector3.up;
-            UpdatePlayerScore(10);
-        } else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            GetComponent<SpriteRenderer>().sprite = playerDown;
-            if (pos.y > -6)
+        if(gameState == GameState.Playing){
+            Vector3 pos = transform.localPosition;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                GetComponent<SpriteRenderer>().sprite = playerUp;
                 GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
-                pos += Vector3.down;
+                pos += Vector3.up;
                 UpdatePlayerScore(10);
-            }
-        } else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            GetComponent<SpriteRenderer>().sprite = playerLeft;
-            if (pos.x > -8)
+            } else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
-                pos += Vector3.left;
-                UpdatePlayerScore(10);
-            }
-            
-        } else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            GetComponent<SpriteRenderer>().sprite = playerRight;
-            if (pos.x < 8)
+                GetComponent<SpriteRenderer>().sprite = playerDown;
+                if (pos.y > -6)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
+                    pos += Vector3.down;
+                    UpdatePlayerScore(10);
+                }
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
-                pos += Vector3.right;
-                UpdatePlayerScore(10);
+                GetComponent<SpriteRenderer>().sprite = playerLeft;
+                if (pos.x > -8)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
+                    pos += Vector3.left;
+                    UpdatePlayerScore(10);
+                }
+                
+            } else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                GetComponent<SpriteRenderer>().sprite = playerRight;
+                if (pos.x < 8)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(playerPoint, 0.7F);
+                    pos += Vector3.right;
+                    UpdatePlayerScore(10);
+                }
+                
             }
-            
+            transform.localPosition = pos;
         }
-        transform.localPosition = pos;
     }
 
     private void CheckCollisions()
@@ -237,6 +240,7 @@ public class PlayerFrogger : MonoBehaviour
         gameState = GameState.GameOver;
         scoreText.enabled = false;
         playAgain.enabled = true;
+        Time.timeScale = 0f;
     }
 
     
