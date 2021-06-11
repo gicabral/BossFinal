@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+// adaptado do tutorial https://www.raywenderlich.com/8094424-unity-2d-techniques-build-a-2d-pinball-game
+
 public class DestroyBall : MonoBehaviour
 {
     public GameObject newBall;
